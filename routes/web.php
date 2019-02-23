@@ -20,10 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/proveedor', 'HomeController@proveedor')->name('proveedor');
-Route::get('/ordencompra', 'HomeController@ordencompra')->name('ordencompra');
-Route::get('/pendientegsi', 'HomeController@pendientegsi')->name('pendientegsi');
-Route::get('/porcargar', 'HomeController@porcargar')->name('porcargar');
-Route::get('/porenviar', 'HomeController@porenviar')->name('porenviar');
-Route::get('/cargado', 'HomeController@cargado')->name('cargado');
-Route::get('/proveedores', ['as' => 'proveedores', 'users' => 'HomeController@proveedor']);
+Route::resource('/proveedor', 'ProveedorController');
+Route::resource('/ordencompra', 'OrdenController');
+Route::resource('/pendientegsi', 'PendienteController');
+Route::get('/porcargar', 'PageController@porcargar')->name('porcargar');
+Route::get('/porenviar', 'PageController@porenviar')->name('porenviar');
+Route::get('/cargado', 'PageController@cargado')->name('cargado');
+
+

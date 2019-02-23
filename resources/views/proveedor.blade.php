@@ -3,46 +3,49 @@
 @extends('menu')
 
 @section('content')
-<body>
+<div class="content">
+                <div class="title m-b-md">
+                    <h1>Estas en vista Proveedores</h1>
+                </div>
+            </div>
+    
 
-<div class="container col-md-4 col-md-offset-4">
+<div class="container">
 
-<form>
-  <div class="btn-group" role="group" aria-label="...">
-      <h2>Comboboxes</h2>
-      <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-              Seleccione una opción
-              <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-              @foreach($proveed as $daniel)
-                <li> <a href="proveedor/prueba/{proveedor}">{{$daniel->proveedor}}</a> </li>
-              @endforeach
-          </ul>
-      </div>
-  </div>
-  <select name="id" id="addLocationIdReq" onchange="ShowSelected();">
-    <option value="" disabled selected >Proveedores:</option>
-                @foreach($proveed as $daniel)
-                <option  onclick="add({{$daniel->id}});" value="{{$daniel->id}}" >{{$daniel->proveedor}}</option>
-                @endforeach
-            </select>
+    <table id="example" class="table table-striped table-bordered" style="width:90%; margin-left:1%">
+       <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Proveedor</th>
+                <th class="text-center">Orden de Compra</th>
+                <th class="text-center">Tiraje </th>
+                <th class="text-center">Valor Facial</th>
+                <th class="text-center">Motivo</th>
+                <th class="text-center">Codigo Motivo</th>
+                <th class="text-center">Status</th>
+            </tr>
+       </thead> 
+       <tbody>
+            @foreach($proveed as $prov)
+                <tr>
+                    <td>{{$prov-> id }}</td>
+                    <td>{{$prov-> proveedor }}</td>
+                    <td>{{$prov-> orden_compra }}</td>
+                    <td>{{$prov-> tiraje }}</td>
+                    <td>{{$prov-> valor_facial}}</td>
+                    <td>{{$prov-> motivo }}</td>
+                    <td>{{$prov-> cod_motivo }}</td>
+                    <td>{{$prov-> status }}</td>
+                  
+                </tr>
+            @endforeach
+       </tbody>
+    </table>
 
-                <li value="" alert="id"> {{ $daniel -> motivo }}</li>
-        </div>
-
-</form>
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
+        </script>
 </div>
-
-});
-<script type="text/javascript">
-function add(id)
-{
-    alert(id);
-};
-</script>
-</body>
-</html>
 @endsection

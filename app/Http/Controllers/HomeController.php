@@ -21,4 +21,25 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     public function index()
+      {
+        $items = [
+            'Consultas'          => ['submenu' => [
+                'Proveedor' => [ 'url' => 'proveedor' ],
+                'Orden de compra' => ['url' => 'ordencompra'],
+                'Pendiente por G.S.I' => ['url' => 'pendientegsi']
+              ]
+             ],
+            'Lotes'         => ['submenu' => [
+                'Por enviar' => [ 'url' => 'porenviar'],
+                'Por Cargar' => ['url' => 'porcargar'],
+                'Cargado' => ['url' => 'cargado']
+            ]
+          ]
+        ];
+        return view('home',compact('items'));
+      }
+
+
 }

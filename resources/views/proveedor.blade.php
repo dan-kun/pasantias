@@ -8,7 +8,7 @@
                     <h1>Estas en vista Proveedores</h1>
                 </div>
             </div>
-    
+
 
 <div class="container">
 
@@ -24,28 +24,33 @@
                 <th class="text-center">Codigo Motivo</th>
                 <th class="text-center">Status</th>
             </tr>
-       </thead> 
-       <tbody>
-            @foreach($proveed as $prov)
-                <tr>
-                    <td>{{$prov-> id }}</td>
-                    <td>{{$prov-> proveedor }}</td>
-                    <td>{{$prov-> orden_compra }}</td>
-                    <td>{{$prov-> tiraje }}</td>
-                    <td>{{$prov-> valor_facial}}</td>
-                    <td>{{$prov-> motivo }}</td>
-                    <td>{{$prov-> cod_motivo }}</td>
-                    <td>{{$prov-> status }}</td>
-                  
-                </tr>
-            @endforeach
-       </tbody>
+       </thead>
     </table>
-
-        <script>
-            $(document).ready(function() {
-                $('#example').DataTable();
-            } );
-        </script>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+          "ServerSide": true,
+          "ajax": "{{ url('api/proveedor') }}",
+          "columns": [
+            {data: 'id'},
+            {data: 'proveedor'},
+            {data: 'orden_compra'},
+            {data: 'tiraje'},
+            {data: 'valor_facial'},
+            {data: 'motivo'},
+            {data: 'cod_motivo'},
+            {data: 'status'},
+  ],
+  "language": {
+
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+
+        },
+        });
+
+    } );
+</script>
 @endsection

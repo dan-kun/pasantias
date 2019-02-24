@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('proveedor', function(){
+	//return App\Seriales::all();
+	return datatables()
+	->eloquent(App\Proveedores::query())
+	->toJson();
+});
+
+Route::get('ordencompra', function(){
+	//return App\Seriales::all();
+	return datatables()
+	->eloquent(App\Orden::query())
+	->toJson();
+});

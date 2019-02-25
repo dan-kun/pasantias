@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Proveedores;
 
 class PendienteController extends Controller
 {
@@ -27,7 +28,11 @@ class PendienteController extends Controller
             ]
           ]
         ];
-          return view('pendientegsi',compact('items'));
+
+        // $pendiente = DB::table('proveedores')->where('status','LIBERADO GSI');
+        $pendiente = Proveedores::all()->where('status','LIBERADO GSI');
+
+          return view('pendientegsi.index',compact('items','pendiente'));
     }
 
     /**
@@ -48,7 +53,8 @@ class PendienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      // $pendiente-> status = $request->get('status');
+      // $pendiente->save();
     }
 
     /**
@@ -70,7 +76,25 @@ class PendienteController extends Controller
      */
     public function edit($id)
     {
-        //
+      $items = [
+          'Consultas'          => ['submenu' => [
+              'Proveedor' => [ 'url' => 'proveedor' ],
+              'Orden de compra' => ['url' => 'ordencompra'],
+              'Pendiente por GSI' => ['url' => 'pendientegsi']
+            ]
+           ],
+          'Lotes'         => ['submenu' => [
+              'Por enviar' => [ 'url' => 'porenviar'],
+              'Por Cargar' => ['url' => 'porcargar'],
+              'Cargado' => ['url' => 'cargado']
+          ]
+        ]
+      ];
+
+      $pendiente = Proveedores::findOrFail($id);
+      return view('pendientegsi.edit',compact('items'), [
+          'pendiente' => $pendiente
+      ]);
     }
 
     /**
@@ -82,7 +106,11 @@ class PendienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $pendiente = Proveedores::findOrFail($id);
+      $pendiente-> status = $request->get('status');
+      $pendiente->save();
+
+      return redirect('/pendientegsi');
     }
 
     /**

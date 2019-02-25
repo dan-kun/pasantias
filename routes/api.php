@@ -28,5 +28,7 @@ Route::get('ordencompra', function(){
 	//return App\Seriales::all();
 	return datatables()
 	->eloquent(App\Orden::query())
+  ->addColumn('btn', 'actions')
+  ->rawColumns(['btn'])
 	->toJson();
 });

@@ -5,12 +5,12 @@ use Faker\Generator as Faker;
 $factory->define(App\Proveedores::class, function (Faker $faker) {
 
     return [
-        'proveedor' => $faker->name,
+        'proveedor' => $faker->randomElement(['MOVILNET','NEA','EQUIS', 'FRESS', 'BOLT', 'MAQUINE', 'DABLIU', 'EIGTH', 'THREE', 'BLUE', 'LIMBER', 'NERON', 'ALEJO', 'DAN', 'ORI', 'KOKO']),
         'cod_motivo' => str_random(5),
-        'motivo' => str_random(5),
-        'valor_facial' => 2000,
-        'tiraje' =>400000,
-        'orden_compra' => 1023,
-        'status' => $faker->name,
+        'motivo' => $faker->randomElement(['PIN VIRTUAL','UNICA','CANTV']),
+        'valor_facial' => $faker->randomElement(['1000','1500','2000']),
+        'tiraje' =>500000,
+        'orden_compra' => mt_rand(1000000,18700000),
+        'status' => $faker->randomElement(['LIBERADO GSI','POR CARGAR','POR ENVIAR','SUSPENDIDO', 'CARGADO' ]),
     ];
 });

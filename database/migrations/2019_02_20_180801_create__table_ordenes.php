@@ -17,8 +17,8 @@ class CreateTableOrdenes extends Migration
             $table->increments('id');
             $table->string('proveedor');
             $table->integer('orden_compra');
-            $table->integer('cant_lotes_creados');
-            $table->string('cant_lotes_existentes');
+            $table->integer('cant_creacion');
+            $table->string('cant_existente');
             $table->timestamps();
         });
     }

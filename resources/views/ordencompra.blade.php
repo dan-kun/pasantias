@@ -16,8 +16,9 @@
             <th>ID</th>
             <th>Orden de Compra</th>
             <th>Proveedor</th>
-            <th>Cantidad de Lotes Creados </th>
-            <th>Cantidad de Lotes Existentes</th>
+            <th>Cantidad de Creacion </th>
+            <th>Cantidad Existente</th>
+            <th>&nbsp; </th>
         </tr>
        </thead>
     </table>
@@ -31,8 +32,9 @@
                 {data: 'id'},
                 {data: 'orden_compra'},
                 {data: 'proveedor'},
-                {data: 'cant_lotes_creados'},
-                {data: 'cant_lotes_existentes'},
+                {data: 'cant_creacion'},
+                {data: 'cant_existente'},
+                {data: 'btn'},
       ],
       "language": {
 

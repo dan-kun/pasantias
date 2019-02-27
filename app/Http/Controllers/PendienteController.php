@@ -30,7 +30,7 @@ class PendienteController extends Controller
         ];
 
         // $pendiente = DB::table('proveedores')->where('status','LIBERADO GSI');
-        $pendiente = Proveedores::all()->where('status','LIBERADO GSI');
+        $pendiente = Proveedores::all()->where('status','LIBERAR');
 
           return view('pendientegsi.index',compact('items','pendiente'));
     }
@@ -110,7 +110,7 @@ class PendienteController extends Controller
       $pendiente-> status = $request->get('status');
       $pendiente->save();
 
-      return redirect('/pendientegsi');
+      return redirect('pendientegsi');
     }
 
     /**

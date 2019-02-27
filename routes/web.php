@@ -26,5 +26,3 @@ Route::resource('/pendientegsi', 'PendienteController');
 Route::get('/porcargar', 'PageController@porcargar')->name('porcargar');
 Route::get('/porenviar', 'PageController@porenviar')->name('porenviar');
 Route::get('/cargado', 'PageController@cargado')->name('cargado');
-
-

@@ -11,6 +11,6 @@ $factory->define(App\Proveedores::class, function (Faker $faker) {
         'valor_facial' => $faker->randomElement(['1000','1500','2000']),
         'tiraje' =>500000,
         'orden_compra' => mt_rand(1000000,18700000),
-        'status' => $faker->randomElement(['LIBERADO GSI','POR CARGAR','POR ENVIAR','SUSPENDIDO', 'CARGADO' ]),
+        'status' => $faker->randomElement(['LIBERAR','POR CARGAR','POR ENVIAR','SUSPENDIDO', 'CARGADO' ]),
     ];
 });
